@@ -17,7 +17,7 @@ namespace TaskManagementSystem.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=COLLO;Database=TaskManagerJitu;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=FRUIT;Database=TaskManagerJitu;Trusted_Connection=True;TrustServerCertificate=True");
         }
     }
 }
