@@ -25,14 +25,27 @@ namespace TaskManagementSystem.Controller
             Console.WriteLine("*************************************");
             Console.WriteLine($"Welcome {username} to User Dashboard");
             Console.WriteLine("*************************************");
-            ViewUserTasks(id);
+            Console.WriteLine("Select an option");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("1. View Tasks");
+           
+            string input = Console.ReadLine();
+            if (input == "1")
+            {
+                ViewUserTasks(id);
+            }
         }
-        //View tasks assigned to user
+    
+
         //View tasks assigned to user
         public void ViewUserTasks(int Id)
         {
             List<TaskDTO> ProjectTasks = userService.GetTasksByUserID(Id);
-            if (ProjectTasks != null)
+            if (ProjectTasks == null)
+            {
+                Console.WriteLine("You have no tasks assigned!");
+            }
+            else
             {
                 foreach (var task in ProjectTasks)
                 {
@@ -42,11 +55,7 @@ namespace TaskManagementSystem.Controller
                         $"Project Priority: {task.Priority} \n" +
                         $"Project DueDate: {task.DueDate}");
                 }
-               UpdateTasksStatus(Id);
-            }
-            else
-            {
-                Console.WriteLine("no tasks assigned");
+                UpdateTasksStatus(Id);
             }
         }
 
